@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -30,6 +33,30 @@ public class Main {
         for (License lic : john.getLicenses()) {
             System.out.println(lic);
         }
+        
+        // ===============================
+//     POLIMORFISM CU PRODUSE
+// ===============================
+
+Product digitalProduct = new Product("D-001", "Digital Installer", "2.0", 199.99);
+PhysicalProduct boxedProduct = new PhysicalProduct("P-001", "Boxed Installer", "2.0", 249.99, 0.85);
+
+List<Product> productList = new ArrayList<>();
+productList.add(digitalProduct);
+productList.add(boxedProduct);
+
+System.out.println("\n=== Lista de produse (Product + PhysicalProduct) ===");
+for (Product p : productList) {
+    System.out.println(p); 
+    // pentru PhysicalProduct se va apela automat toString() suprascris
+}
+
+System.out.println("=== Aplicare discount 10% pentru toate produsele ===");
+for (Product p : productList) {
+    p.applyDiscount(10);  // funcționează pentru ambele tipuri
+    System.out.println(p);
+}
+
 
         // testăm updateEmail
         john.updateEmail("john.new@example.com");
